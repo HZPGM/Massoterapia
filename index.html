@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog de Massoterapia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #065153;
+      --background-color: #f0eed5;
+      --text-color: #333;
+      --accent-color: #065153;
+      --whatsapp-green: #25D366;
+      --whatsapp-hover: #1ebe5d;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { height:100%; scroll-behavior: smooth; }
+    body {
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+      font-family:'Libre Franklin',sans-serif;
+      background-color:var(--background-color);
+      color:var(--text-color);
+      line-height:1.6;
+    }
+    header {
+      background-color:var(--primary-color);
+      padding:1rem;
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+    }
+    #menu-toggle { display:none; }
+    .menu-icon {
+      display:none;
+      font-size:1.8rem;
+      color:#f0eed5;
+      cursor:pointer;
+    }
+    nav ul { list-style:none; display:flex; gap:1rem; }
+    nav a { color:#f0eed5; text-decoration:none; font-weight:600; }
+    .hero {
+      flex:0 0 auto;
+      display:flex;
+      justify-content:center;
+      padding:2rem 1rem;
+    }
+    .hero img { width:150px; }
+    .about {
+      flex:0 0 auto;
+      background:white;
+      max-width:800px;
+      margin:1rem auto;
+      padding:2rem 1rem;
+      border-radius:8px;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+      text-align:center;
+    }
+    .about h1 { color:var(--primary-color); font-size:1.8rem; margin-bottom:0.5rem; }
+    .about p { color:#555; }
+    .services {
+      flex:0 0 auto;
+      padding:2rem 1rem;
+    }
+    .services h2 { text-align:center; color:var(--primary-color); margin-bottom:1.5rem; }
+    .services-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1rem;
+      max-width:800px;
+      margin:0 auto;
+    }
+    .service-card {
+      background:white;
+      padding:1rem;
+      border-radius:8px;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+    .service-card h3 { color:var(--primary-color); margin-bottom:0.5rem; font-size:1.1rem; }
+    .service-card p { color:#555; font-size:0.95rem; }
+    .container {
+      flex:1 0 auto;
+      max-width:800px;
+      margin:2rem auto;
+      padding:0 1rem;
+    }
+    .post {
+      background:white;
+      padding:1.5rem;
+      margin-bottom:2rem;
+      border-radius:8px;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+    .post h2 { color:var(--primary-color); margin-bottom:0.5rem; }
+    .post .meta { font-size:0.9rem; color:#777; margin-bottom:1rem; }
+    .post p { margin-bottom:1rem; }
+    .read-more {
+      background:var(--accent-color);
+      color:#f0eed5;
+      padding:0.5rem 1rem;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+      font-weight:500;
+    }
+    .post-details {
+      display:none;
+      margin-top:1rem;
+      background:#f9f9f9;
+      padding:1rem;
+      border-radius:4px;
+      color:#444;
+    }
+    #contato {
+      flex:0 0 auto;
+      text-align:center;
+      margin:2rem 0;
+    }
+    .whatsapp-button {
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background-color:var(--whatsapp-green);
+      color:white;
+      text-decoration:none;
+      padding:0.75rem 1.25rem;
+      border-radius:50px;
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+      transition:background-color 0.2s,transform 0.2s;
+      z-index:1000;
+    }
+    .whatsapp-button img { width:28px; }
+    .whatsapp-button span { font-weight:600; }
+    .whatsapp-button:hover { background-color:var(--whatsapp-hover); transform:translateY(-2px) scale(1.05); }
+    footer {
+      background-color:var(--primary-color);
+      color:#f0eed5;
+      text-align:center;
+      padding:1.5rem 0;
+      margin-top:auto;
+    }
+    @media(max-width:768px) {
+      .menu-icon { display:block; }
+      nav ul { display:none; flex-direction:column; position:absolute; top:100%; right:0; background:var(--primary-color); width:100%; }
+      #menu-toggle:checked + .menu-icon + nav ul { display:flex; }
+      .hero img { width:120px; }
+      .about, .container { margin:1rem auto; padding:1rem; }
+      .service-card { padding:0.75rem; }
+      .read-more { width:100%; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    <nav>
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <img src="logo.png" alt="Logo Massoterapia">
+    </section>
+    <section class="about">
+      <h1>Adriana Pareira Martorano</h1>
+      <p>Adriana é massoterapeuta formada pelo SENAC e pelo Instituto Claudia Zenebre, especializada em técnicas que promovem relaxamento profundo e bem-estar de forma delicada e eficaz.</p>
+    </section>
+    <section id="servicos" class="services">
+      <h2>Serviços</h2>
+      <div class="services-grid">
+        <div class="service-card"><h3>Massagem Relaxante</h3><p>Alivia o estresse e a tensão muscular, melhora a circulação sanguínea e promove uma sensação geral de relaxamento.</p></div>
+        <div class="service-card"><h3>Drenagem Linfática</h3><p>Elimina retenção de líquidos, reduz inchaços e estimula a circulação linfática, contribuindo para a desintoxicação do corpo.</p></div>
+        <div class="service-card"><h3>Pedras Quentes</h3><p>Utiliza o calor das pedras para relaxar músculos, aliviar dores e promover melhor circulação sanguínea.</p></div>
+        <div class="service-card"><h3>Pindas Chinesas</h3><p>Compressas de ervas quentes aliviam tensões e ativam a circulação.</p></div>
+        <div class="service-card"><h3>Reflexologia Podal</h3><p>Estimula pontos específicos dos pés para equilibrar energeticamente o corpo e ajudar no alívio de dores.</p></div>
+        <div class="service-card"><h3>Moxabustação</h3><p>Aplicação de calor com moxa para estimular a circulação e aliviar dores articulares.</p></div>
+        <div class="service-card"><h3>Massagem Modeladora</h3><p>Trabalha na redefinição dos contornos corporais, reduz medidas e melhora o aspecto da pele.</p></div>
+        <div class="service-card"><h3>Massagem com Velas Quentes</h3><p>Utiliza velas terapêuticas derretidas que nutrem a pele e proporcionam relaxamento através da aromaterapia.</p></div>
+        <div class="service-card"><h3>Ventosaterapia</h3><p>Ventosas desintoxicam tecidos, aliviam dores e melhoram a circulação.</p></div>
+        <div class="service-card"><h3>Reiki</h3><p>Prática de imposição de mãos que equilibra a energia vital, promovendo bem-estar físico e mental.</p></div>
+        <div class="service-card"><h3>Quick Massage</h3><p>Massagem expressa para alívio rápido de tensões, ideal para pausas no dia a dia.</p></div>
+      </div>
+    </section>
+    <div id="blog" class="container">
+      <section class="post">
+        <h2>Técnicas de Massagem Relaxante</h2>
+        <div class="meta">Publicado em 08 de Julho, 2025</div>
+        <p>Descubra os benefícios da massagem relaxante para aliviar o estresse e promover o bem-estar geral do corpo.</p>
+        <button class="read-more">Leia mais</button>
+        <div class="post-details">
+          <ul>
+            <li>Alívio do estresse</li>
+            <li>Relaxamento muscular profundo</li>
+            <li>Melhora da circulação</li>
+            <li>Redução de tensões</li>
+          </ul>
+        </div>
+      </section>
+      <section class="post">
+        <h2>Massagem Terapêutica: Quando e Por Quê</h2>
+        <div class="meta">Publicado em 02 de Julho, 2025</div>
+        <p>Entenda como a massagem terapêutica pode ajudar no tratamento de dores crônicas, tensão muscular e reabilitação de lesões.</p>
+        <button class="read-more">Leia mais</button>
+        <div class="post-details">
+          <ul>
+            <li>Alívio de dores crônicas</li>
+            <li>Recuperação de lesões</li>
+            <li>Melhora da mobilidade</li>
+            <li>Redução de rigidez</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <section id="contato">
+      <a href="https://wa.me/15996086731" target="_blank" class="whatsapp-button">
+        <img src="whatsapp-icon.png" alt="WhatsApp">
+        <span>Whatsapp</span>
+      </a>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Dri Martorano Massoterapeuta. Todos os direitos reservados.
+  </footer>
+  <script>
+    document.querySelectorAll('.read-more').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var details = this.nextElementSibling;
+        if (details.style.display === 'block') {
+          details.style.display = 'none';
+          this.textContent = 'Leia mais';
+        } else {
+          details.style.display = 'block';
+          this.textContent = 'Leia menos';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
